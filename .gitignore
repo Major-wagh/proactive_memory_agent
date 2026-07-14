@@ -23,3 +23,7 @@ Thumbs.db
 # Scratch / local artifacts
 scratch/
 *.log
+
+# Paper copies kept local-only — linked, not redistributed (see docs/paper/README.md)
+docs/paper/*.pdf
+docs/paper/paper_extracted_text.txt

@@ -12,6 +12,8 @@
 
 These are the **Paper gap** callouts from parts 03–07, consolidated. Each becomes a decision in a numbered spec.
 
+> **Update 2026-07-14:** the authors' reference implementation was vetted — [part 09](part_09_authors_reference_implementation.md) closes G1–G6, G10 and G11 with concrete answers (verbatim prompts, injection wire format, tag vocabulary, BM25 prefilter, synchronous execution). G8 is partially addressed; **G9 (cost reporting) remains fully open** and is ours to close. Specs should start from part 09's answers.
+
 | # | Gap | Why it matters | Where we decide |
 |---|---|---|---|
 | G1 | Exact Phase-1 / Phase-2 prompts | The core "IP" of a prompted memory agent; quality of the whole system | spec 002 (check authors' repo first) |

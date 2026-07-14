@@ -12,11 +12,12 @@ Digest of **"Remember When It Matters: Proactive Memory Agent for Long-Horizon A
 | 06 | [Evaluation & ablations](part_06_evaluation_and_ablations.md) | Benchmarks, main numbers, what each ablation isolates, reproduction caveats. |
 | 07 | [Training open-weight memory](part_07_training_open_weight_memory.md) | SFT + GRPO recipe on SETA, pivot turns, transfer results. |
 | 08 | [Limits & open questions](part_08_limits_and_open_questions.md) | What the paper leaves unspecified — the direct input to our specs. |
+| 09 | [Authors' reference implementation](part_09_authors_reference_implementation.md) | Vetted authors' repo: the real Phase-1/2 prompts, injection wire format, bank internals — closes most gaps from part 08. |
 
 ## Reading paths
 
 - **"Just tell me the idea"** → 01.
-- **Implementing the module** → 03 → 04 → 05, then [`../../specs/`](../../specs/).
+- **Implementing the module** → 03 → 04 → 05 → **09**, then [`../../specs/`](../../specs/).
 - **Reproducing the results** → 06 (plus 03 §6 for configuration defaults).
 - **Training a memory model** → 07.
 - **Reviewing / de-risking the project** → 02 → 08.

@@ -55,7 +55,7 @@ N = 1 (memory step every action step) · k = 8 (window) · ≤ 1 reminder per me
 
 **Risks:**
 - **R1 — Local memory-model calibration.** Paper's strongest warning: an uncalibrated small memory agent *degrades* performance. Mitigation: strongest local model on the memory role; silence-biased prompting; watch intervention rate from the first run.
-- **R2 — Prompts unpublished (G1).** We write our own Phase-1/2 prompts; vet the authors' repo first (OI-3).
+- **R2 — Prompts unpublished (G1).** ~~We write our own Phase-1/2 prompts.~~ **Resolved 2026-07-14:** the authors' repo publishes both system prompts (Apache-2.0) — see [part 09](../docs/context/part_09_authors_reference_implementation.md). We adapt them with attribution; risk downgraded to prompt-*tuning* for local models.
 - **R3 — deepagents API drift.** Verify the current middleware API against live docs at implementation time (spec 003).
 - **R4 — Eval credibility at small n.** Seeds + variance reporting; expect ±1–2 pp noise, as observed in the paper itself (part 06 §6).
 
@@ -69,9 +69,9 @@ N = 1 (memory step every action step) · k = 8 (window) · ≤ 1 reminder per me
 
 ## 8. Open items (not blocking M1)
 
-- **OI-1** License (MIT or Apache-2.0 suggested) + GitHub remote for the open-source release.
+- **OI-1** ~~License + GitHub remote.~~ **Resolved 2026-07-14:** MIT license added (`LICENSE`); published to GitHub. Portions later adapted from the authors' Apache-2.0 repo will carry attribution via `THIRD_PARTY_NOTICES.md`.
 - **OI-2** Owner hardware (GPU / VRAM) → concrete model sizes (e.g. Qwen3 8B / 14B / 30B-A3B via Ollama).
-- **OI-3** Vet the authors' repo (<https://github.com/yifannnwu/proactive-memory-agent>) for prompts and harness details before spec 002.
+- **OI-3** ~~Vet the authors' repo.~~ **Resolved 2026-07-14:** vetted — findings in [part 09](../docs/context/part_09_authors_reference_implementation.md); gaps G1–G6, G10, G11 closed, G8 partial, G9 still ours.
 - **OI-4** Task source for the M3 proof eval.
 
 ## 9. Next specs
