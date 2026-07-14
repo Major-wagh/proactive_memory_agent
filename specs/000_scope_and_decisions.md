@@ -54,7 +54,7 @@ N = 1 (memory step every action step) · k = 8 (window) · ≤ 1 reminder per me
 **Non-goals:** cross-session / persistent user memory · SFT/GRPO training · full benchmark reproduction · product concerns (multi-tenancy, UI).
 
 **Risks:**
-- **R1 — Local memory-model calibration.** Paper's strongest warning: an uncalibrated small memory agent *degrades* performance. Mitigation: strongest local model on the memory role; silence-biased prompting; watch intervention rate from the first run.
+- **R1 — Local memory-model calibration.** Paper's strongest warning: an uncalibrated small memory agent *degrades* performance. Mitigation: strongest local model on the memory role; silence-biased prompting; watch intervention rate from the first run. **Sharpened by OI-2 (4 GB VRAM):** a ~4B memory policy is far below the paper's Opus sidecar, so the proof-of-effect eval (spec 004) should include tasks that *deliberately induce* behavioral state decay (long filler between fact and use) so the effect is detectable at this scale. Escape hatch if the local proof stalls: the model client is any OpenAI-compatible endpoint, so an API memory model is a config-only diagnostic — owner decides if/when.
 - **R2 — Prompts unpublished (G1).** ~~We write our own Phase-1/2 prompts.~~ **Resolved 2026-07-14:** the authors' repo publishes both system prompts (Apache-2.0) — see [part 09](../docs/context/part_09_authors_reference_implementation.md). We adapt them with attribution; risk downgraded to prompt-*tuning* for local models.
 - **R3 — deepagents API drift.** Verify the current middleware API against live docs at implementation time (spec 003).
 - **R4 — Eval credibility at small n.** Seeds + variance reporting; expect ±1–2 pp noise, as observed in the paper itself (part 06 §6).
@@ -70,10 +70,10 @@ N = 1 (memory step every action step) · k = 8 (window) · ≤ 1 reminder per me
 ## 8. Open items (not blocking M1)
 
 - **OI-1** ~~License + GitHub remote.~~ **Resolved 2026-07-14:** MIT license added (`LICENSE`); published to GitHub. Portions later adapted from the authors' Apache-2.0 repo will carry attribution via `THIRD_PARTY_NOTICES.md`.
-- **OI-2** Owner hardware (GPU / VRAM) → concrete model sizes (e.g. Qwen3 8B / 14B / 30B-A3B via Ollama).
+- **OI-2** ~~Owner hardware → model sizes.~~ **Resolved 2026-07-14:** NVIDIA RTX 3050, **4 GB VRAM**, Windows 11. Runtime = **Ollama** (native Windows; vLLM needs WSL2 — deferred). Default v1 pairing: **one shared model for both roles** — Qwen3-4B-class at Q4 quantization (~2.5 GB weights; roughly 8K context realistic with KV-cache quantization — verify empirically at M2, and check whether a newer ~4B Qwen has been released by then). A single resident model avoids per-step model-swap thrash on one GPU. Alternates to test at M2: Qwen3-1.7B action + 4B memory (memory role always gets the stronger model); 8B-class only via CPU offload — likely too slow at trigger interval N=1, plausible at N≥4. Consequences: trigger interval N and context char budgets become the primary knobs (spec 002); same-model-both-roles is paper-consistent (the Opus actor + Opus memory row still gained +2.4/+2.5 pp).
 - **OI-3** ~~Vet the authors' repo.~~ **Resolved 2026-07-14:** vetted — findings in [part 09](../docs/context/part_09_authors_reference_implementation.md); gaps G1–G6, G10, G11 closed, G8 partial, G9 still ours.
 - **OI-4** Task source for the M3 proof eval.
 
 ## 9. Next specs
 
-`001_memory_bank.md` (schema, tools, serialization — closes G3/G4/G5/G11) · `002_two_phase_agent.md` (prompts, injection wire format, sync model — closes G1/G2/G6/G7/G8) · `003_deepagents_adapter.md` (middleware seam — closes G10) · `004_proof_eval.md` (closes G9, OI-4).
+[`001_memory_bank.md`](001_memory_bank.md) (schema, tools, serialization — closes G3/G4/G5/G11) — **written 2026-07-14** · `002_two_phase_agent.md` (prompts, injection wire format, sync model, context budgets — closes G1/G2/G6/G7/G8) · `003_deepagents_adapter.md` (middleware seam — closes G10) · `004_proof_eval.md` (closes G9, OI-4).

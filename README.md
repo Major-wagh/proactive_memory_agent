@@ -38,8 +38,9 @@ No implementation code lands before its spec. `specs/000` fixes scope and record
 - [x] Paper read and distilled into `docs/context/` (2026-07-14)
 - [x] Spec 000 — scope and owner decisions
 - [x] Authors' reference implementation vetted — verbatim prompts & injection format captured in [part 09](docs/context/part_09_authors_reference_implementation.md)
-- [ ] Spec 001+ — component specs
-- [ ] Implementation
+- [x] Spec 001 — memory bank & Phase-1 tool surface ([specs/001](specs/001_memory_bank.md))
+- [ ] Spec 002–004 — two-phase agent · deepagents adapter · proof eval
+- [ ] Implementation (starts at M1 after spec review)
 
 ## License
 
