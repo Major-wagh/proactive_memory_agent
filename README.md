@@ -15,7 +15,7 @@ Read only as deep as you need:
 |---|---|---|
 | 0 — Elevator pitch | 1 min | this README |
 | 1 — The whole idea | 10 min | [`docs/context/part_01_the_idea.md`](docs/context/part_01_the_idea.md) |
-| 2 — Topic deep dives | 5–10 min each | [`docs/context/README.md`](docs/context/README.md) — index of parts 01–08 |
+| 2 — Topic deep dives | 5–10 min each | [`docs/context/README.md`](docs/context/README.md) — index of parts 01–09 |
 | 3 — Source of truth | — | [`docs/paper/`](docs/paper/) — links to the paper (arXiv 2607.08716) + authors' code |
 | Spec — what *we* build | 10 min | [`specs/000_scope_and_decisions.md`](specs/000_scope_and_decisions.md) |
 
@@ -27,9 +27,11 @@ proactive_memory_agent/
 ├── LICENSE                   ← MIT
 ├── docs/
 │   ├── context/              ← the paper digested into self-contained parts 01–09 (levels 1–2)
+│   ├── research/             ← tooling de-risk memos that inform the specs (evidence, cited)
 │   └── paper/                ← pointers to the paper & authors' code (level 3, source of truth)
 └── specs/                    ← spec-driven development: specs precede code
-    └── 000_scope_and_decisions.md
+    ├── 000_scope_and_decisions.md
+    └── 001_memory_bank.md
 ```
 
 ## Method (spec-driven)
@@ -42,7 +44,8 @@ No implementation code lands before its spec. `specs/000` fixes scope and record
 - [x] Spec 000 — scope and owner decisions
 - [x] Authors' reference implementation vetted — verbatim prompts & injection format captured in [part 09](docs/context/part_09_authors_reference_implementation.md)
 - [x] Spec 001 — memory bank & Phase-1 tool surface ([specs/001](specs/001_memory_bank.md))
-- [ ] Spec 002–004 — two-phase agent · deepagents adapter · proof eval
+- [x] Tooling de-risked — injection seam + local-model/Ollama plan verified ([research memo](docs/research/2026-07-17_tooling_derisk.md)); harness adjusted to LangChain `create_agent` + custom middleware, model `qwen3:4b`, trigger N=4
+- [ ] Spec 002–004 — two-phase agent · harness adapter · proof eval
 - [ ] Implementation (starts at M1 after spec review)
 
 ## Attribution & credit
