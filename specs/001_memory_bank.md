@@ -73,6 +73,8 @@ Tags `[ENV] [PATH] [FACT]` (knowledge) and `[BUG] [PERF]` (procedural) are **pro
 
 **v1: no eviction.** Growth is bounded in practice by `max_entry_chars` and proof-task length. The authors' approach beyond ~50 entries (BM25 top-20 prefilter of what the *memory agent's prompt* shows) is **deferred to v1.1** with an explicit trigger: adopt it the first time an M2/M3 run's bank exceeds ~50 entries. The bank exposes counts and char totals so the orchestrator can log growth per step (feeds G9 metering).
 
+**Amendment (spec 002 §5, 2026-07-17):** on 4 GB VRAM with `num_ctx=4096` the **prompt token budget binds before the 50-entry count**. Spec 002's `ObservationBuilder` renders only a **recency-first subset** of entries that fits the bank-render slice (~900 tokens), upgrading to BM25-against-observation later. This is a **prompt-only view** — the bank remains the untruncated source of truth (the render helpers in §6 gain an optional `max_tokens`/selection arg; the four ops and serialization are unchanged).
+
 ## 8. Serialization
 
 JSON, UTF-8:
