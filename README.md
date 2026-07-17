@@ -33,7 +33,8 @@ proactive_memory_agent/
     ├── 000_scope_and_decisions.md
     ├── 001_memory_bank.md
     ├── 002_two_phase_agent.md
-    └── 003_harness_adapter.md
+    ├── 003_harness_adapter.md
+    └── 004_proof_eval.md
 ```
 
 ## Method (spec-driven)
@@ -49,8 +50,10 @@ No implementation code lands before its spec. `specs/000` fixes scope and record
 - [x] Tooling de-risked — injection seam + local-model/Ollama plan verified ([research memo](docs/research/2026-07-17_tooling_derisk.md)); harness = LangChain `create_agent` + custom middleware, model `qwen3:4b`, trigger N=4
 - [x] Spec 002 — two-phase memory agent ([specs/002](specs/002_two_phase_agent.md))
 - [x] Spec 003 — harness adapter (LangChain `create_agent` middleware) ([specs/003](specs/003_harness_adapter.md))
-- [ ] Spec 004 — proof-of-effect eval (needs task-source decision, OI-4)
-- [ ] Implementation (starts at M1 after spec review)
+- [x] Spec 004 — proof-of-effect eval (synthetic decay-stress tasks) ([specs/004](specs/004_proof_eval.md))
+- [x] **Planning complete** — specs 000–004 written; all open items (OI-1…4) resolved
+- [ ] **M1** — implement the memory bank (spec 001) + memory agent (spec 002) against a mock LLM
+- [ ] M2 — harness adapter + real `qwen3:4b` via Ollama · **M2.5** calibration gate · M3 — proof eval
 
 ## Attribution & credit
 
