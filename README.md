@@ -32,7 +32,8 @@ proactive_memory_agent/
 └── specs/                    ← spec-driven development: specs precede code
     ├── 000_scope_and_decisions.md
     ├── 001_memory_bank.md
-    └── 002_two_phase_agent.md
+    ├── 002_two_phase_agent.md
+    └── 003_harness_adapter.md
 ```
 
 ## Method (spec-driven)
@@ -47,7 +48,8 @@ No implementation code lands before its spec. `specs/000` fixes scope and record
 - [x] Spec 001 — memory bank & Phase-1 tool surface ([specs/001](specs/001_memory_bank.md))
 - [x] Tooling de-risked — injection seam + local-model/Ollama plan verified ([research memo](docs/research/2026-07-17_tooling_derisk.md)); harness = LangChain `create_agent` + custom middleware, model `qwen3:4b`, trigger N=4
 - [x] Spec 002 — two-phase memory agent ([specs/002](specs/002_two_phase_agent.md))
-- [ ] Spec 003–004 — harness adapter · proof eval
+- [x] Spec 003 — harness adapter (LangChain `create_agent` middleware) ([specs/003](specs/003_harness_adapter.md))
+- [ ] Spec 004 — proof-of-effect eval (needs task-source decision, OI-4)
 - [ ] Implementation (starts at M1 after spec review)
 
 ## Attribution & credit
