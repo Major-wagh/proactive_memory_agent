@@ -2,6 +2,9 @@
 
 Implementation workspace for the paper **"Remember When It Matters: Proactive Memory Agent for Long-Horizon Agents"** — Wu et al., Meta AI, July 2026 (arXiv:2607.08716).
 
+> [!IMPORTANT]
+> **This is an independent, unofficial learning project. We are not the authors of the paper and claim no ownership of it or the ideas it introduces.** All research credit belongs to Yifan Wu, Lizhu Zhang, Yuhang Zhou, Mingyi Wang, Bo Peng, Serena Li, Xiangjun Fan, and Zhuokai Zhao (Meta AI). This repository exists to *learn from* and *reproduce* their work, and is **not affiliated with, endorsed by, or connected to Meta AI or the authors.** The paper's method and results are theirs; only this re-implementation and its notes are ours. See [Attribution & credit](#attribution--credit).
+
 **The idea in three sentences.** Long-horizon LLM agents fail not only by *losing* information, but by *ceasing to be steered* by information they already produced — task requirements, environment facts, failed attempts, diagnoses, open subgoals. The paper names this **behavioral state decay** and treats memory as an **intervention policy**: a sidecar memory agent maintains a small structured memory bank and, at each memory step, explicitly decides to **inject one concise memory-grounded reminder into the action agent's next call, or stay silent**. That selectivity — not storage, retrieval, or summarization — is what moves benchmarks: **+8.3 pp** pass@1 on Terminal-Bench 2.0 and **+6.8 pp** on τ²-Bench for Claude Sonnet 4.5, with gains persisting for stronger action agents.
 
 ## How to read this repo (progressive disclosure)
@@ -42,6 +45,26 @@ No implementation code lands before its spec. `specs/000` fixes scope and record
 - [ ] Spec 002–004 — two-phase agent · deepagents adapter · proof eval
 - [ ] Implementation (starts at M1 after spec review)
 
+## Attribution & credit
+
+**The paper, its method, and its results are the work of its authors — not us.** This repository is a third-party, educational re-implementation by a learner; nothing here should be read as an official artifact of the paper.
+
+- **Paper:** *Remember When It Matters: Proactive Memory Agent for Long-Horizon Agents* — Yifan Wu, Lizhu Zhang, Yuhang Zhou, Mingyi Wang, Bo Peng, Serena Li, Xiangjun Fan, Zhuokai Zhao (Meta AI), arXiv:[2607.08716](https://arxiv.org/abs/2607.08716), 2026.
+- **Authors' official code (Apache-2.0):** <https://github.com/yifannnwu/proactive-memory-agent>
+- **This repo is:** an unofficial study/reproduction. Not affiliated with, endorsed by, or reviewed by the authors or Meta AI. Any errors here are ours, not the paper's.
+
+If you want the source of truth, read the paper and the authors' repository above. The digest in [`docs/context/`](docs/context/README.md) is our study notes; where it quotes the paper it is marked, and where it diverges from the paper that is logged in the spec's Fidelity Ledger.
+
+```bibtex
+@article{wu2026memoryagent,
+  title   = {Remember When It Matters: Proactive Memory Agent for Long-Horizon Agents},
+  author  = {Wu, Yifan and Zhang, Lizhu and Zhou, Yuhang and Wang, Mingyi and Peng, Bo and Li, Serena and Fan, Xiangjun and Zhao, Zhuokai},
+  journal = {arXiv preprint arXiv:2607.08716},
+  year    = {2026},
+  url     = {https://arxiv.org/abs/2607.08716}
+}
+```
+
 ## License
 
-MIT (see [`LICENSE`](LICENSE)). The authors' reference implementation is Apache-2.0; any code or prompts adapted from it will carry attribution (see part 09 §8).
+MIT (see [`LICENSE`](LICENSE)) — covers **only our own code, specs, and notes** in this repository, not the paper or its ideas. The authors' reference implementation is Apache-2.0; any code or prompts adapted from it will carry attribution (see [part 09 §8](docs/context/part_09_authors_reference_implementation.md)). Quotations and figures from the paper remain the intellectual property of its authors and are used here for study and commentary.
